@@ -1,0 +1,6 @@
+1. What is the value of SQLAlchemy?
+SQL Alchemy uses Python to make communicating with databases easier.
+2. What is a model?
+A model is a Python class that represents a data table.
+3. What is a view?
+A view is a database table.
