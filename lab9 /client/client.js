@@ -165,9 +165,9 @@ const handleServerMessage = ev => {
         console.log(data);
 
         if (data.username == username) {
-            document.querySelector("#chat").innerHTML += `<div class = "messages "> <div class="left"><strong>${data.username}</strong>: ${data.text}</div> </div>`;}
+            document.querySelector("#chat").innerHTML += `<div class = "messages " aria-live = "polite" > <div class="left"><strong>${data.username}</strong>:${data.text}</div> </div>`;}
         else {
-            document.querySelector("#chat").innerHTML += `<div class = "messages "> <div class="right"> <strong>${data.username}</strong>: ${data.text}</div> </div>`;}
+            document.querySelector("#chat").innerHTML += `<div class = "messages" aria-live = "polite"> <div class="right"> <strong>${data.username}</strong>: ${data.text}</div> </div>`;}
     
 
 
