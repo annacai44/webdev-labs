@@ -1,55 +1,81 @@
 import React from 'react';
-import BookmarkButton from './BookmarkButton';
 import LikeButton from './LikeButton';
-import { getHeaders } from './utils';
-
+import BookmarkButton from './BookmarkButton';
+import AddComment from './AddComment';
+import {getHeaders} from './utils';
 
 class Post extends React.Component {
   
     constructor(props) {
         super(props);
-        // initialization code here
-        this.state = {post : props.model};
-        this.refresh = this.refresh.bind(this);
+        this.state = {
+            post: props.model
+        }
+        this.refreshPostDataFromServer = this.refreshPostDataFromServer.bind(this);
     }
 
+    // function that executes after the component is injected into the DOM
     componentDidMount() {
         // fetch posts and then set the state...
     }
-    refresh() {
+
+    refreshPostDataFromServer () {
+        // re-fetch the post:
         const url = '/api/posts/' + this.state.post.id;
-        fetch (url, {headers : getHeaders()})
-        .then(res => res.json())
+        fetch(url, {
+            headers: getHeaders()
+        }).then(response => response.json())
         .then(data => {
+            console.log("BYEEEE");
             console.log(data);
-            this.setState({post: data});
-            
-        }
-        )}
-    
+            this.setState({
+                post: data
+            })
+        })
+    }
 
-    
     render () {
-    const post = this.state.post;
-    return ( 
-    <section className ="card">
-         <div className = "header">
-           {post.user.username}
-
-         </div>
-         <img src = {post.image_url}></img>
-         <LikeButton 
-         likeId = {post.current_user_like_id}
-          postId = {post.id} 
-          refresh = {this.refresh}
-          />
-        <BookmarkButton 
-        bookmarkId = {post.current_user_bookmark_id} 
-        postId = {post.id} 
-        refresh = {this.refresh}/>
-         <div className = "caption"> <p> <strong>{post.user.username}</strong>{post.caption}</p></div>
-    </section>
-    )
+        const post = this.state.post;
+        return (
+            <section className="card">
+                <div className="header">
+                    <h3>{post.user.username}</h3>
+                </div>
+                <img src={post.image_url}/>
+                <div className="info">
+                    <div className="buttons">
+                        <div>
+                            <LikeButton 
+                                likeId={post.current_user_like_id}
+                                postId={post.id}
+                                refreshPost={this.refreshPostDataFromServer}/>
+                            <i className="far fa-comment"></i>
+                            <i className="far fa-paper-plane"></i>
+                        </div>
+                        <BookmarkButton 
+                            bookmarkId={post.current_user_bookmark_id}
+                            postId={post.id}
+                            refreshPost={this.refreshPostDataFromServer}/>
+                    </div>
+                    <p className="likes"><strong>{post.likes.length} likes</strong></p>
+                    <div className="caption">
+                        <p>
+                            <strong>{post.user.username}</strong>
+                        {post.caption}</p>
+                    </div>
+                    {/* <div className="comments">
+                        <div>
+                            <p>
+                                <strong>comments</strong>
+                                sdkfjdsklf
+                            </p>
+                        </div>
+                    </div> */}
+                    <AddComment/>
+                    
+                </div>
+            </section>
+        )
     }
 }
 

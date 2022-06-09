@@ -7,15 +7,18 @@ class Profile extends React.Component {
         // initialization code here
     }
 
+    // function that executes after the component is injected into the DOM
     componentDidMount() {
         // fetch posts and then set the state...
     }
+
     render () {
-    return (
-        <header>
-                    Profile 123
-                    {/* Navigation Links */}
-        </header>)
+        return (
+            <header>
+                <img src={this.props.imageUrl} className="pic"/>
+                <h1>{this.props.username}</h1>
+            </header>
+        )
     }
 }
 

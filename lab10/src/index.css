@@ -43,6 +43,7 @@ button.link.following.active {
 }
 header {
     margin-top: 20px;
+    display: flex;
 }
 
 nav {
@@ -105,8 +106,8 @@ main {
     align-items: center;
 }
 .stories > div .pic {
-    min-width: 50px;
-    min-height: 50px;
+    width: 50px;
+    height: 50px;
     border: solid 3px #dbdbdb;
     border-radius: 27px;
 }
@@ -231,8 +232,8 @@ main {
     font-weight: 400;
 }
 .suggestions section .pic {
-    min-width: 30px;
-    min-height: 30px;
+    width: 30px;
+    height: 30px;
     border: solid 1px #dbdbdb;
     border-radius: 15px;
 }
@@ -243,8 +244,8 @@ aside header > div {
 }
 
 aside header .pic {
-    min-width: 60px;
-    min-height: 60px;
+    width: 60px;
+    height: 60px;
     border-radius: 33px;
     border-width: 0px;
     margin-right: 20px;
