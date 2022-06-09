@@ -17,7 +17,7 @@ class Stories extends React.Component {
             headers: getHeaders()
         }).then(response => response.json())
         .then(data => {
-            console.log(data);
+
             this.setState({
                 stories: data
             })
@@ -34,7 +34,7 @@ class Stories extends React.Component {
             <header className="stories">  
             {
                 this.state.stories.map(story => {
-                    console.log(story);
+                
                     return (
                         <div key={'story_' + story.id}>
                             <img className="pic" src={story.user.image_url}/>

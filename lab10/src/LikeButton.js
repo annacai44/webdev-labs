@@ -68,7 +68,7 @@ class LikeButton extends React.Component {
         const heartClass = (likeId ? 'fas' : 'far') + ' fa-heart';
         return (
             <button 
-                className="like"
+                className= "like"
                 onClick={this.toggleLike}
                 aria-label="Like / Unlike">
                 <i className={heartClass}></i>

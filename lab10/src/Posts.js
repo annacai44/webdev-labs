@@ -17,7 +17,7 @@ class Posts extends React.Component {
             headers: getHeaders()
         }).then(response => response.json())
         .then(data => {
-            console.log(data);
+  
             this.setState({
                 posts: data
             })
@@ -39,7 +39,7 @@ class Posts extends React.Component {
                 <div id="posts">
                     {
                         this.state.posts.map(post => {
-                            console.log(post);
+                            
                             return (
                                 <Post 
                                     key={'post_' + post.id}

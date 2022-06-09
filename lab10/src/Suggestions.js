@@ -10,7 +10,9 @@ class Suggestions extends React.Component {
         this.state = {
             suggestions: []
         }
+        this.getSuggestionsFromServer = this.getSuggestionsFromServer.bind(this);
         this.getSuggestionsFromServer();
+        this.refresh = this.refresh.bind(this);
     }
 
     getSuggestionsFromServer () {
@@ -18,12 +20,16 @@ class Suggestions extends React.Component {
             headers: getHeaders()
         }).then(response => response.json())
         .then(data => {
-            console.log('sup');
-            console.log(data);
             this.setState({
                 suggestions: data
+
             })
+            console.log(data);
+
         })
+    }
+    refresh () {
+        this.getSuggestionsFromServer();
     }
 
     // function that executes after the component is injected into the DOM
@@ -42,11 +48,15 @@ class Suggestions extends React.Component {
                 <p className="suggestion-text">Suggestions for you</p>
                 {
                     this.state.suggestions.map(suggestion => {
-                        console.log(suggestion);
+                  
                         return (
                             <Suggestion 
                                 key={'suggestion_' + suggestion.id}
-                                model={suggestion}/>
+                                model={suggestion}
+                                refresh={this.refresh}/>
+
+
+                                
                         )
                     })
                 }

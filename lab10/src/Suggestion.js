@@ -9,8 +9,10 @@ class Suggestion extends React.Component {
         // initialization code here
         this.state = {
             suggestion: props.model
+
         }
-        this.refreshSuggestionDataFromServer = this.refreshSuggestionDataFromServer.bind(this);
+
+        
     }
 
     // function that executes after the component is injected into the DOM
@@ -18,19 +20,19 @@ class Suggestion extends React.Component {
         // fetch posts and then set the state...
     }
 
-    refreshSuggestionDataFromServer () {
-        // re-fetch the post:
-        const url = '/api/suggestions/' + this.state.suggestion.id;
-        fetch(url, {
-            headers: getHeaders()
-        }).then(response => response.json())
-        .then(data => {
-            console.log(data);
-            this.setState({
-                suggestion: data
-            })
-        })
-    }
+    // refreshSuggestionDataFromServer () {
+    //     // re-fetch the post:
+    //     const url = '/api/suggestions/'
+    //     fetch(url, {
+    //         headers: getHeaders()
+    //     }).then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //         this.setState({
+    //             suggestion: data
+    //         })
+    //     })
+    // }
 
     render () {
         const suggestion = this.state.suggestion;
@@ -44,8 +46,9 @@ class Suggestion extends React.Component {
                 <div>
                     {/* <button className="link following">follow</button> */}
                     <FollowButton
-                        following={suggestion}
-                        refreshSuggestion={this.refreshSuggestionDataFromServer}/>
+                        user_id={suggestion.id}
+                        
+                        refreshSuggestion={this.props.refresh}/>
                 </div>
             </section>
         )
