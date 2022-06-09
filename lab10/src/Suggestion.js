@@ -1,4 +1,5 @@
 import React from 'react';
+import FollowButton from './FollowButton';
 import {getHeaders} from './utils';
 
 class Suggestion extends React.Component {
@@ -41,7 +42,10 @@ class Suggestion extends React.Component {
                     <p>suggested for you</p>
                 </div>
                 <div>
-                    <button>follow</button>
+                    {/* <button className="link following">follow</button> */}
+                    <FollowButton
+                        followingId={suggestion.id}
+                        refreshPost={this.refreshSuggestionDataFromServer}/>
                 </div>
             </section>
         )
