@@ -18,23 +18,22 @@ class FollowButton extends React.Component {
         // fetch posts and then set the state...
     }
 
-    toggleFollow () {
-        // console.log(this.props.BookmarkId)
-        // if (this.props.followingId) {
-            console.log('bye');
-            this.followUser();
-        // } else {
-        //     console.log('hi');
-        //     this.unfollowUser();
-        // }
-    }
 
+    toggleFollow () {
+        if (this.props.following) {
+            console.log('following user');
+            this.followUser();
+        } else {
+            console.log('unfollowing user');
+            this.unfollowUser();
+        }
+    }
 
 
     followUser () {
         const url = '/api/following';
         const userData = {
-            user_id: this.props.followingId
+            user_id: this.props.following.id
         }
         console.log('create follow:', url);
         fetch (url, {
@@ -46,13 +45,13 @@ class FollowButton extends React.Component {
             // needs to trigger post redraw
             console.log("SO COOL")
             console.log(data);
-            // this.props.refreshPost();
+            // this.props.refreshSuggestion();
         })
     }
 
     unfollowUser () {
         // fetch DELETE: /api/posts/likes/{likeId}
-        const url = '/api/following/' + this.props.followingId;
+        const url = '/api/following/' + this.props.following.id;
         console.log('remove follow:', url);
         fetch (url, {
             headers: getHeaders(),
@@ -61,19 +60,23 @@ class FollowButton extends React.Component {
         .then(data => {
             // needs to trigger post redraw
             console.log(data);
-            // this.props.refreshPost();
+            // this.props.refreshSuggestion();
         })
     }
 
     render () {
         const bookmarkId = this.props.bookmarkId;
+        // REPLACE bookmarkId WITH CONDITIONAL ON WHETHER BUTTON SHOULD BE 
+        // FOLLOW OR UNFOLLOW
         const followClass = bookmarkId ? 'link following active' : 'link following';
         return (
             <button 
+                role="switch"
                 className={followClass}
                 onClick={this.toggleFollow}
-                aria-checked="false">
-                following
+                aria-checked="false"
+                aria-label={this.props.following.username}>
+                follow
             </button>
         )
     }

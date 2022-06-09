@@ -44,8 +44,8 @@ class Suggestion extends React.Component {
                 <div>
                     {/* <button className="link following">follow</button> */}
                     <FollowButton
-                        followingId={suggestion.id}
-                        refreshPost={this.refreshSuggestionDataFromServer}/>
+                        following={suggestion}
+                        refreshSuggestion={this.refreshSuggestionDataFromServer}/>
                 </div>
             </section>
         )
