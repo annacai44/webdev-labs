@@ -20,13 +20,13 @@ class FollowButton extends React.Component {
 
 
     toggleFollow () {
-        if (this.props.following) {
+        // if (this.props.following) {
             console.log('following user');
             this.followUser();
-        } else {
-            console.log('unfollowing user');
-            this.unfollowUser();
-        }
+        // } else {
+        //     console.log('unfollowing user');
+        //     this.unfollowUser();
+        // }
     }
 
 
