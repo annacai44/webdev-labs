@@ -31,6 +31,8 @@ class Post extends React.Component {
             this.setState({
                 post: data
             })
+ 
+
         })
     }
 
@@ -65,18 +67,19 @@ class Post extends React.Component {
                             <strong>{post.user.username}</strong>
                         {post.caption}</p>
                     </div>
-                    {/* <div className="comments">
+                    {/* /* <div className="comments">
                         <div>
                             <p>
                                 <strong>comments</strong>
                                 sdkfjdsklf
                             </p>
                         </div>
-                    </div> */}
+                    </div> */ }
                     <p className="timestamp">{post.display_time}</p>
                     <AddComment
                         postId={post.id}
-                        text="hi"/>
+                        refreshPost={this.refreshPostDataFromServer}/>
+                        
                     
                 </div>
             </section>

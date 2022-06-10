@@ -6,17 +6,29 @@ class AddComment extends React.Component {
     constructor(props) {
         super(props);
         // initialization code here
+        this.state = {value: ''};
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
 
     }
-
-    addComment () {
-        // fetch POST: /api/posts/likes
+    focusTextInput() {
+        this.textInput.current.focus();
+      }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+      handleSubmit(event) {
+        event.preventDefault(); 
         const url = '/api/comments';
         const postData = {
             post_id: this.props.postId,
-            text: this.props.text
+            text: this.state.value
         }
-        console.log('create like:', url);
+        console.log('create comment:', url);
         fetch (url, {
             headers: getHeaders(),
             method: 'POST',
@@ -25,9 +37,13 @@ class AddComment extends React.Component {
         .then(data => {
             // needs to trigger post redraw
             console.log(data);
-            this.props.refreshPost();
+            
         })
-    }
+        this.setState({value: ''});
+    
+      }
+
+    
 
     // function that executes after the component is injected into the DOM
     componentDidMount() {
@@ -36,16 +52,21 @@ class AddComment extends React.Component {
 
     render () {
         return (
-            <form className="add-comment">
+            <form className="add-comment" onSubmit={this.handleSubmit}>
             <div className="input-holder">
                 <input 
                     type="text"
                     className="comment-textbox" 
                     placeholder="Add a comment..." 
-                    aria-label="Add a comment">
+                    aria-label="Add a comment"
+                    value={this.state.value} 
+                    onChange={this.handleChange}
+                    ref={this.textInput}
+                    >
+
                 </input>
             </div>
-            <button className="link">Post</button>
+            <button className="link" type="submit" value="Submit" onClick={this.focusTextInput}>Post</button>
         </form>
         )
     }
