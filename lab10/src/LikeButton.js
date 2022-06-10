@@ -65,15 +65,29 @@ class LikeButton extends React.Component {
 
     render () {
         const likeId = this.props.likeId;
-        const heartClass = (likeId ? 'fas' : 'far') + ' fa-heart';
-        return (
-            <button 
-                className= "like"
-                onClick={this.toggleLike}
-                aria-label="Like / Unlike">
-                <i className={heartClass}></i>
-            </button>
-        )
+        if (likeId) {
+            return (
+                <button 
+                    role="switch"
+                    className= "like"
+                    onClick={this.toggleLike}
+                    aria-label="Like Button"
+                    aria-checked="true">
+                    <i className='fas fa-heart'></i>
+                </button>
+            )
+        } else {
+            return (
+                <button 
+                    role="switch"
+                    className= "like"
+                    onClick={this.toggleLike}
+                    aria-label="Like Button"
+                    aria-checked="false">
+                    <i className='far fa-heart'></i>
+                </button>
+            )
+        }
     }
 }
 
