@@ -45,6 +45,7 @@ class Suggestion extends React.Component {
                 </div>
                 <div>
                     {/* <button className="link following">follow</button> */}
+                    
                     <FollowButton
                         user_id={suggestion.id}
                         

@@ -8,10 +8,12 @@ class FollowButton extends React.Component {
 
         // binding "this":
         // not intuitive. helps disambiguate between what 'this' is
+
         // this.toggleFollow = this.toggleFollow.bind(this);
+        this.toggleFollow = this.toggleFollow.bind(this);
         this.followUser = this.followUser.bind(this);
         this.unfollowUser = this.unfollowUser.bind(this);
-        this.state = {following_id: null}
+        this.state = {following_id: null};
         
         
 
@@ -23,16 +25,16 @@ class FollowButton extends React.Component {
     }
 
 
-    // toggleFollow () {
+     toggleFollow () {
          
-    //     if (this.state.following) {
-    //         this.followUser();
-    //     } else {
-    //         this.unfollowUser();
-    //     }
+        if (this.state.following_id) {
+         this.unfollowUser();
+     } else {
+            this.followUser();
+       }
 
         
-    // }
+    }
 
   
 
@@ -69,7 +71,7 @@ class FollowButton extends React.Component {
         }).then(response => response.json())
         .then(data => {
             // needs to trigger post redraw
-            this.setState({following_id: null});
+             this.setState({following_id: ''});
             console.log(data);
             
            
@@ -80,26 +82,19 @@ class FollowButton extends React.Component {
     render () { 
         // REPLACE bookmarkId WITH CONDITIONAL ON WHETHER BUTTON SHOULD BE 
         // FOLLOW OR UNFOLLOW
-        if (this.state.following_id) {
-        
-        
-        return (
-            <button 
-                className= "unfollow"
-                onClick={this.unfollowUser}>
-                Unfollow
-            </button>
-        )
-    }
-    else {
-        return (
-            <button 
-                className= "follow"
-                onClick={this.followUser}>
-                Follow
-            </button>
-        )
-    }
+        const classn = this.state.following_id ? 'follow' : 'unfollow';
+        const text = this.state.following_id ? 'Unfollow' : 'Follow';
+
+
+  
+       
+    return (
+        <button 
+            className= {classn}
+            onClick= {this.toggleFollow}>
+            {text}
+        </button>
+    )
 }
 }
 

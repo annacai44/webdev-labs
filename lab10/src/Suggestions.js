@@ -38,9 +38,10 @@ class Suggestions extends React.Component {
     }
 
     render () {
+
         return this.state.suggestions.length === 0 ?
         (
-            <div id="posts">Loading suggestions...</div>
+            <div >Loading suggestions...</div>
         )
         :
         (
