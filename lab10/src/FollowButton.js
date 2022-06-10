@@ -73,21 +73,29 @@ class FollowButton extends React.Component {
     }
 
     render () { 
-        // REPLACE bookmarkId WITH CONDITIONAL ON WHETHER BUTTON SHOULD BE 
-        // FOLLOW OR UNFOLLOW
-        const classn = this.state.following_id ? 'follow' : 'unfollow';
-        const text = this.state.following_id ? 'Unfollow' : 'Follow';
-
-
-  
-       
-    return (
-        <button 
-            className= {classn}
-            onClick= {this.toggleFollow}>
-            {text}
-        </button>
-    )
+    if (this.state.following_id) {
+        return (
+            <button
+                role="switch"
+                className= "link following active"
+                aria-checked="true"
+                aria-label={"follow " + this.props.username}
+                onClick={this.unfollowUser}>
+            unfollow
+            </button>
+        )
+    } else {
+        return (
+            <button
+                role="switch"
+                className= "link following"
+                aria-checked="false"
+                aria-label={"follow " + this.props.username}
+                onClick={this.followUser}>
+            follow
+            </button>
+        )
+    }
 }
 }
 

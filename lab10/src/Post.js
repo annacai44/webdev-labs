@@ -2,6 +2,7 @@ import React from 'react';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';
 import AddComment from './AddComment';
+import Comments from './Comments';
 import {getHeaders} from './utils';
 
 class Post extends React.Component {
@@ -26,13 +27,10 @@ class Post extends React.Component {
             headers: getHeaders()
         }).then(response => response.json())
         .then(data => {
-            console.log("BYEEEE");
             console.log(data);
             this.setState({
                 post: data
             })
- 
-
         })
     }
 
@@ -67,20 +65,13 @@ class Post extends React.Component {
                             <strong>{post.user.username}</strong>
                         {post.caption}</p>
                     </div>
-                    {/* /* <div className="comments">
-                        <div>
-                            <p>
-                                <strong>comments</strong>
-                                sdkfjdsklf
-                            </p>
-                        </div>
-                    </div> */ }
+                    <Comments
+                        comments={post.comments}
+                        refreshPost={this.refreshPostDataFromServer}/>
                     <p className="timestamp">{post.display_time}</p>
                     <AddComment
                         postId={post.id}
                         refreshPost={this.refreshPostDataFromServer}/>
-                        
-                    
                 </div>
             </section>
         )
