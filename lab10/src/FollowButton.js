@@ -12,30 +12,12 @@ class FollowButton extends React.Component {
         this.followUser = this.followUser.bind(this);
         this.unfollowUser = this.unfollowUser.bind(this);
         this.state = {following_id: null}
-        
-        
-
     }
 
     // function that executes after the component is injected into the DOM
     componentDidMount() {
         // fetch posts and then set the state...
     }
-
-
-    // toggleFollow () {
-         
-    //     if (this.state.following) {
-    //         this.followUser();
-    //     } else {
-    //         this.unfollowUser();
-    //     }
-
-        
-    // }
-
-  
-
 
     followUser () {
         const url = '/api/following';
@@ -52,11 +34,7 @@ class FollowButton extends React.Component {
             // needs to trigger post redraw
             this.setState({following_id: data.id});
             console.log(data);
-       
-            
-
-        })
-        
+        })     
     }
 
     unfollowUser () {
@@ -71,35 +49,32 @@ class FollowButton extends React.Component {
             // needs to trigger post redraw
             this.setState({following_id: null});
             console.log(data);
-            
-           
-      
         })
     }
 
     render () { 
-        // REPLACE bookmarkId WITH CONDITIONAL ON WHETHER BUTTON SHOULD BE 
-        // FOLLOW OR UNFOLLOW
         if (this.state.following_id) {
-        
-        
         return (
             <button 
-                className= "unfollow"
+                role="switch"
+                className= "link following active"
+                aria-checked="true"
                 onClick={this.unfollowUser}>
-                Unfollow
+                unfollow
             </button>
         )
-    }
-    else {
-        return (
-            <button 
-                className= "follow"
-                onClick={this.followUser}>
-                Follow
-            </button>
-        )
-    }
+        }
+        else {
+            return (
+                <button 
+                    role="switch"
+                    className= "link following"
+                    aria-checked="false"
+                    onClick={this.followUser}>
+                    follow
+                </button>
+            )
+        }
 }
 }
 

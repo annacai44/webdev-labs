@@ -71,6 +71,7 @@ class Post extends React.Component {
                             </p>
                         </div>
                     </div> */}
+                    <p className="timestamp">{post.display_time}</p>
                     <AddComment/>
                     
                 </div>
