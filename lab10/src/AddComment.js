@@ -16,7 +16,13 @@ class AddComment extends React.Component {
     }
     focusTextInput() {
         this.textInput.current.focus();
+
       }
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            this.handleSubmit(event);
+        }
+    }
     handleChange(event) {
         this.setState({value: event.target.value});
       }
@@ -66,7 +72,15 @@ class AddComment extends React.Component {
 
                 </input>
             </div>
-            <button className="link" type="submit" value="Submit" onClick={this.focusTextInput}>Post</button>
+            <button 
+                className="link"
+                type="submit" 
+                value="Submit" 
+                onClick={this.focusTextInput} 
+                aria-label="Submit Comment"
+                onKeyDown={this.handleKeyDown}>
+                
+                 Post</button>
         </form>
         )
     }
