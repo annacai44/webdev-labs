@@ -1,6 +1,5 @@
 import React from 'react';
 import FollowButton from './FollowButton';
-import {getHeaders} from './utils';
 
 class Suggestion extends React.Component {
   
@@ -9,10 +8,7 @@ class Suggestion extends React.Component {
         // initialization code here
         this.state = {
             suggestion: props.model
-
         }
-
-        
     }
 
     // function that executes after the component is injected into the DOM
@@ -38,7 +34,10 @@ class Suggestion extends React.Component {
         const suggestion = this.state.suggestion;
         return (
             <section>
-                <img className="pic" src={suggestion.image_url}/>
+                <img 
+                    className="pic" 
+                    alt={"profile pic for " + suggestion.username}
+                    src={suggestion.image_url}/>
                 <div>
                     <p>{suggestion.username}</p>
                     <p>suggested for you</p>
@@ -48,7 +47,7 @@ class Suggestion extends React.Component {
                     
                     <FollowButton
                         user_id={suggestion.id}
-                        
+                        username={suggestion.username}
                         refreshSuggestion={this.props.refresh}/>
                 </div>
             </section>

@@ -65,15 +65,29 @@ class BookmarkButton extends React.Component {
 
     render () {
         const bookmarkId = this.props.bookmarkId;
-        const bookmarkClass = (bookmarkId ? 'fas' : 'far') + ' fa-bookmark';
-        return (
-            <button 
-                className="bookmark"
-                onClick={this.toggleBookmark}
-                aria-label="Bookmark / Unbookmark">
-                <i className={bookmarkClass}></i>
-            </button>
-        )
+        if (bookmarkId) {
+            return (
+                <button 
+                    role="switch"
+                    className="bookmark"
+                    aria-checked="true"
+                    onClick={this.toggleBookmark}
+                    aria-label="Bookmark Button">
+                    <i className='fas fa-bookmark'></i>
+                </button>
+            )
+        } else {
+            return (
+                <button 
+                    role="switch"
+                    className="bookmark"
+                    aria-checked="false"
+                    onClick={this.toggleBookmark}
+                    aria-label="Bookmark Button">
+                    <i className='far fa-bookmark'></i>
+                </button>
+            )
+        }
     }
 }
 

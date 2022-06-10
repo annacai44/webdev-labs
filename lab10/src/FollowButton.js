@@ -54,11 +54,7 @@ class FollowButton extends React.Component {
             // needs to trigger post redraw
             this.setState({following_id: data.id});
             console.log(data);
-       
-            
-
-        })
-        
+        })     
     }
 
     unfollowUser () {
@@ -73,9 +69,6 @@ class FollowButton extends React.Component {
             // needs to trigger post redraw
              this.setState({following_id: ''});
             console.log(data);
-            
-           
-      
         })
     }
 

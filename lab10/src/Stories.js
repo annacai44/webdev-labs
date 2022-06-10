@@ -37,7 +37,10 @@ class Stories extends React.Component {
                 
                     return (
                         <div key={'story_' + story.id}>
-                            <img className="pic" src={story.user.image_url}/>
+                            <img 
+                                className="pic" 
+                                alt={"profile pic for " + story.user.username}
+                                src={story.user.image_url}/>
                             <p>{story.user.username}</p>
                         </div>
                     )
