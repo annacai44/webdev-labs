@@ -15,7 +15,7 @@ class Profile extends React.Component {
     render () {
         return (
             <header>
-                <img src={this.props.imageUrl} className="pic"/>
+                <img alt="profile pic of current user" src={this.props.imageUrl} className="pic"/>
                 <h1>{this.props.username}</h1>
             </header>
         )

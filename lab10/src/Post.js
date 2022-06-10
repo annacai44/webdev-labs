@@ -41,7 +41,9 @@ class Post extends React.Component {
                 <div className="header">
                     <h3>{post.user.username}</h3>
                 </div>
-                <img src={post.image_url}/>
+                <img 
+                    alt={"image posted by " + post.user.username}
+                    src={post.image_url}/>
                 <div className="info">
                     <div className="buttons">
                         <div>

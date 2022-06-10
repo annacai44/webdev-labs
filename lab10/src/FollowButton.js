@@ -59,7 +59,7 @@ class FollowButton extends React.Component {
                 role="switch"
                 className= "link following active"
                 aria-checked="true"
-                aria-label="Follow Button"
+                aria-label={"follow " + this.props.username}
                 onClick={this.unfollowUser}>
                 unfollow
             </button>
@@ -71,7 +71,7 @@ class FollowButton extends React.Component {
                     role="switch"
                     className= "link following"
                     aria-checked="false"
-                    aria-label="Follow Button"
+                    aria-label={"follow " + this.props.username}
                     onClick={this.followUser}>
                     follow
                 </button>
