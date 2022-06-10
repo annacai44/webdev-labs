@@ -16,7 +16,6 @@ class AddComment extends React.Component {
     }
     focusTextInput() {
         this.textInput.current.focus();
-
       }
     handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -43,7 +42,7 @@ class AddComment extends React.Component {
         .then(data => {
             // needs to trigger post redraw
             console.log(data);
-            
+            this.props.refreshPost();
         })
         this.setState({value: ''});
     

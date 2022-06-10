@@ -237,25 +237,7 @@ main {
     border: solid 1px #dbdbdb;
     border-radius: 15px;
 }
-.follow {
-    align-self: center;
-    text-decoration: none;
-    color: #306B9C;
-    font-family: 'Open Sans', sans-serif;
-    background: transparent;
-    font-size: 13px;
-    border : none ;
-}
 
-.unfollow {
-    align-self: center;
-    text-decoration: none;
-    color: #306B9C;
-    font-family: 'Open Sans', sans-serif;
-    background: white;
-    border-radius: 5px;
-    font-size: 13px;
-}
 aside header > div {
     display: flex;
     align-items: center;
