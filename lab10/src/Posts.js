@@ -17,7 +17,7 @@ class Posts extends React.Component {
             headers: getHeaders()
         }).then(response => response.json())
         .then(data => {
-  
+            
             this.setState({
                 posts: data
             })

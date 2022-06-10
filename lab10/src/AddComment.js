@@ -6,23 +6,28 @@ class AddComment extends React.Component {
     constructor(props) {
         super(props);
         // initialization code here
-        this.state = {
-            comments: []
-        }
-        // this.getCommentsFromServer();
+
     }
 
-    // getCommentsFromServer () {
-    //     fetch('/api/comments', {
-    //         headers: getHeaders(),
-    //     }).then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //         this.setState({
-    //             comments: data
-    //         })
-    //     })
-    // }
+    addComment () {
+        // fetch POST: /api/posts/likes
+        const url = '/api/comments';
+        const postData = {
+            post_id: this.props.postId,
+            text: this.props.text
+        }
+        console.log('create like:', url);
+        fetch (url, {
+            headers: getHeaders(),
+            method: 'POST',
+            body: JSON.stringify(postData)
+        }).then(response => response.json())
+        .then(data => {
+            // needs to trigger post redraw
+            console.log(data);
+            this.props.refreshPost();
+        })
+    }
 
     // function that executes after the component is injected into the DOM
     componentDidMount() {
