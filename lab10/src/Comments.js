@@ -13,10 +13,12 @@ class Comments extends React.Component {
 
     render () {
         const lastComment = this.props.comments[this.props.comments.length - 1]
-        if (this.props.comments.length > 1) {
+        const openModal = this.props.openModal;
+        
+        if (this.props.comments.length > 1  ) {
             return (
                 <div className="comments">
-                    <button className="link">View all {this.props.comments.length} comments</button>
+                    <button className="link" onClick = {this.props.openModal} >View all {this.props.comments.length} comments</button>
                     <div key={'comment_' + lastComment.id}>
                         <p>
                         <strong>{lastComment.user.username}</strong>
@@ -25,7 +27,7 @@ class Comments extends React.Component {
                     </div>
                 </div>
             )
-        } else if (this.props.comments.length === 1) {
+        } else if (this.props.comments.length === 1 ) {
             return (
                 <div className="comments">
                     <div key={'comment_' + lastComment.id}>
@@ -36,7 +38,10 @@ class Comments extends React.Component {
                     </div>
                 </div>
             )
-        } else {
+        } 
+        
+
+        else  {
             return null
         }
     }
