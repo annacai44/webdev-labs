@@ -15,15 +15,14 @@ class ModalComments extends React.Component {
         return (
             this.props.comments.map(comment => {
                 return (
-                <div className="comment">
-                    <img src={comment.user.thumb_url}  alt="profile pic for {comment.user.username }" />
-        
-                    <div className = "text">
-                        <p><strong>{comment.user.username }</strong>{comment.text}</p>
-        
-                        <h6 className="date"> {comment.display_time} </h6>
-        
-                   </div>
+                <div key={"comment_" + comment.id}>
+                        <div>
+                        <p>
+                            <strong>{comment.user.username }</strong>
+                            {comment.text}
+                        </p>
+                        <p className="comment-timestamp"> {comment.display_time} </p>
+                        </div>
                 </div>
                 )
             })

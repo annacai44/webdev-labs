@@ -34,7 +34,7 @@ class App extends React.Component {
             <div>
 
             <NavBar 
-                title="Photo App" 
+                title="NUstagram" 
                 username={this.state.user.username}/>
 
             <aside>

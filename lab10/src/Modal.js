@@ -27,25 +27,27 @@ class Modal extends React.Component {
         console.log ('modal is open');
         return (
             < div className ="modal-bg" aria-hidden="false" role="dialog">
-                <section className="modal">
                     <button className="close" aria-label="Close the modal window" onClick= {this.props.closeModal} > <i className="fas fa-times"> </i></button>
-                    <div className="modal-body">
-                            <img src={ this.state.post.image_url } alt="image posted by " />
-                        <div className = "side-bar"> 
-                        <Header                     
-                        username = {this.state.post.user.username}
-                        imageUrl = {this.state.post.user.image_url}/>
-                        
-                            <div className = "all_comments ">
-                               <ModalComments comments={this.state.post.comments}/>
-                        
-                                    
+                    <div className="modal">
+                        <img 
+                            className="featured-image" 
+                            src={ this.state.post.image_url } 
+                            alt="image posted by " />
+                        <div className = "container"> 
+                            <h3>
+                                <img 
+                                    id="header-image"
+                                    alt="profile pic of current user" 
+                                    src={this.state.post.user.image_url}/>
+                                {this.state.post.user.username}
+                            </h3>
+                            <div className = "body">
+                            <ModalComments comments={this.state.post.comments}/>  
                             </div>
                         </div>
                     </div>
              
                  
-                </section>
             </div>
         )
     }
